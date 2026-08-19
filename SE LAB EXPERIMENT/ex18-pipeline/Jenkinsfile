@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building Docker image...'
+                sh 'docker build -t ex18-app .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing application...'
+                sh 'docker run --rm ex18-app'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+            }
+        }
+
+        stage('Show Output') {
+            steps {
+                echo 'Hello from EX18 CI/CD Pipeline 🚀'
+            }
+        }
+    }
+}

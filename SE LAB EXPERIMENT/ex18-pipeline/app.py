@@ -1,0 +1,1 @@
+print("Hello from EX18 CI/CD Pipeline 🚀")
